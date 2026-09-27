@@ -38,12 +38,20 @@ header{position:sticky;top:0;z-index:20;background:#ffffffee;backdrop-filter:blu
 .pvThumbs img.on{opacity:1;border-color:#fff}
 .profile{text-align:center;clear:both;width:100%}.avatar{width:76px;height:76px;min-width:76px;min-height:76px;position:relative;overflow:hidden;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--p),#9185ff);color:#fff;font-size:29px;font-weight:900;margin:7px auto 12px;box-sizing:border-box}.avatar img{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:100%;max-height:100%;object-fit:cover;border-radius:50%;display:block}
 .mybook{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:11px 0;border-bottom:1px solid #eee}
+.mybook:last-child{border-bottom:0;padding-bottom:0}
 .mybook .mbInfo{flex:1;min-width:0}
 .mybook .mbInfo b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mbActions{display:flex;gap:6px;flex-shrink:0}
-.editBtn{border:0;background:var(--p);color:#fff;padding:8px 10px;border-radius:8px;font-weight:800;font-size:14px;line-height:1}
-.danger{border:0;background:#ffe9e9;color:#c33;padding:7px 10px;border-radius:8px}
-.toast{position:fixed;bottom:25px;left:50%;transform:translateX(-50%) translateY(20px);background:#182033;color:#fff;padding:12px 17px;border-radius:10px;opacity:0;pointer-events:none;transition:.25s;z-index:300;font-size:13px}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.mbActions{display:flex;gap:6px;flex-shrink:0;align-items:center}
+.editBtn,.viewBtn{border:0;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:16px;line-height:1;padding:0;flex-shrink:0}
+.editBtn{background:var(--p);color:#fff;box-shadow:0 4px 10px #5b4bdb33}
+.viewBtn{background:#eef0ff;color:var(--p);border:1px solid #dedaff}
+.danger{border:0;background:#ffe9e9;color:#c33;padding:7px 12px;border-radius:20px;font-weight:800}
+.profileActions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.profileActions .btn{min-width:140px}
+.profileBox{background:#f7f8fc;border:1px solid var(--line);border-radius:16px;padding:14px 14px 10px;margin-top:16px;text-align:left}
+.profileBox h3{margin:0 0 8px;font-size:16px}
+.profileBox .emptyNote{margin:8px 0 4px;color:var(--muted);font-size:13px}
+.toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%) translateY(20px);background:#182033;color:#fff;padding:12px 17px;border-radius:10px;opacity:0;pointer-events:none;transition:.25s;z-index:300;font-size:13px}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 footer{text-align:center;color:var(--muted);padding:30px 15px}
 .chatBox{width:min(560px,100%);height:min(88vh,760px);max-height:92vh;padding:0;display:flex;flex-direction:column;overflow:hidden}.chatHead{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);background:#fff}.chatAvatar{width:42px;height:42px;border-radius:50%;object-fit:cover;background:#eee;display:grid;place-items:center;font-weight:900;color:#fff}.chatHeadInfo{flex:1}.chatHeadInfo b{display:block}.chatHeadInfo small{color:var(--muted)}.chatBack{border:0;background:#f0f1f5;border-radius:9px;padding:8px 10px}.chatMessages{flex:1;overflow:auto;padding:16px;background:#f4f5f8}.bubbleRow{display:flex;margin:6px 0}.bubbleRow.mine{justify-content:flex-end}.bubble{max-width:78%;padding:9px 11px;border-radius:14px;background:#fff;box-shadow:0 2px 7px #1720330c;font-size:14px;line-height:1.4;cursor:pointer;transition:filter .15s}.bubble:hover{filter:brightness(0.98)}.mine .bubble{background:#e7e2ff}.bubble img{max-width:100%;border-radius:10px;display:block;margin-bottom:5px}.bubbleMeta{display:flex;justify-content:flex-end;gap:5px;align-items:center;margin-top:3px;font-size:10px;color:#7b8190}.tick{font-weight:900;letter-spacing:-2px;color:#7b8190}.tick.blue{color:#1686ff}.chatComposer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:#fff}.chatComposer input{flex:1}.chatComposer button{width:48px;border:0;border-radius:10px;background:var(--p);color:#fff;font-weight:900}.chatComposer .attachBtn{width:44px;border:0;border-radius:10px;background:#f0f1f5;color:#596174;font-size:18px;font-weight:900;display:grid;place-items:center;cursor:pointer}.chatComposer .attachBtn:hover{background:#e6e6ef}.chatList{display:grid;gap:8px;margin-top:12px}.chatItem{display:flex;align-items:center;gap:11px;padding:11px;border:1px solid var(--line);border-radius:13px;background:#fff;text-align:left;width:100%}.chatItem:hover{background:#f8f7ff}.chatItemInfo{flex:1;min-width:0}.chatItemInfo b,.chatPreview{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chatPreview{font-size:12px;color:var(--muted);margin-top:3px}.chatTime{font-size:10px;color:var(--muted)}.unreadBadge{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--p);color:#fff;font-size:10px;display:grid;place-items:center;font-weight:900}.chatEmpty{padding:30px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:14px}
 .msgMenu{position:fixed;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px #17203330;padding:6px;z-index:500;min-width:200px;display:flex;flex-direction:column;gap:2px;animation:pop .12s ease-out}@keyframes pop{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}.msgMenu button{border:0;background:transparent;padding:10px 14px;text-align:left;border-radius:8px;font-size:13px;font-weight:700;color:var(--ink)}.msgMenu button:hover{background:#f0efff;color:var(--p)}.msgMenu button.dangerBtn:hover{background:#ffe9e9;color:#c33}
@@ -165,7 +173,7 @@ window.firebaseAuthReady = persistenceReady;
 window.firebaseGetBooks = async function(){
   await persistenceReady;
   const snap = await getDocs(collection(db, "books"));
-  return snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  return snap.docs.map(d => ({ ...d.data(), id: d.id }));
 };
 
 window.firebaseSaveBook = async function(book){
@@ -303,11 +311,26 @@ const fbWhere = (...a) => window.fbWhere(...a);
 const fbOrderBy = (...a) => window.fbOrderBy(...a);
 const fbIncrement = (...a) => window.fbIncrement(...a);
 
-const BOOKKEY="campusloop_creative_books",USERKEY="campusloop_creative_user",FAVKEY="campusloop_creative_favs";
+const BOOKKEY="campusloop_creative_books",USERKEY="campusloop_creative_user",FAVKEY="campusloop_creative_favs",DELKEY="campusloop_deleted_book_ids",MIGFLAG="campusloop_books_migrated_v2";
 function profileKey(uid){return USERKEY+"_"+uid;}
 function favKey(uid){return FAVKEY+"_"+uid;}
 function loadAccountFavs(uid){try{const a=JSON.parse(localStorage.getItem(favKey(uid))||"[]");return Array.isArray(a)?a.map(String):[]}catch(e){return []}}
 function saveAccountFavs(uid){try{localStorage.setItem(favKey(uid),JSON.stringify(favs))}catch(e){console.warn("Favourite save failed",e)}}
+function loadDeletedIds(){try{const a=JSON.parse(localStorage.getItem(DELKEY)||"[]");return Array.isArray(a)?a.map(String):[]}catch(e){return []}}
+function markBookDeleted(id){
+ const s=String(id);
+ const a=loadDeletedIds();
+ if(!a.includes(s)){
+  a.push(s);
+  try{localStorage.setItem(DELKEY,JSON.stringify(a));}catch(e){}
+ }
+ try{
+  const old=JSON.parse(localStorage.getItem(BOOKKEY)||"[]");
+  if(Array.isArray(old)&&old.length){
+   localStorage.setItem(BOOKKEY,JSON.stringify(old.filter(x=>String(x&&x.id)!==s)));
+  }
+ }catch(e){}
+}
 let books=[];
 let user=JSON.parse(localStorage.getItem(USERKEY)||"null"),favs=(()=>{try{const a=JSON.parse(localStorage.getItem(FAVKEY)||"[]");return Array.isArray(a)?a.map(String):[]}catch(e){return []}})(),filter="All";
 let uploadedImages=[];
@@ -318,21 +341,45 @@ async function migrateOldOwnBooksToFirebase(){
  const fu=window.currentFirebaseUser;
  if(!fu) return;
  try{
+  if(localStorage.getItem(MIGFLAG)==="1"){
+   localStorage.removeItem(BOOKKEY);
+   return;
+  }
   const old=JSON.parse(localStorage.getItem(BOOKKEY)||"[]");
-  const own=Array.isArray(old)?old.filter(b=>b && b.ownerUid===fu.uid):[];
+  const deleted=new Set(loadDeletedIds());
+  const own=Array.isArray(old)?old.filter(b=>b && b.ownerUid===fu.uid && !deleted.has(String(b.id))):[];
   for(const book of own){
-   await saveBookToFirebase(book);
+   try{
+    const snap=await fbGetDoc(fbDoc(window.firebaseDb,"books",String(book.id)));
+    if(snap.exists()) continue;
+    await saveBookToFirebase(book);
+   }catch(e){console.warn("Skip migrate listing",book&&book.id,e);}
   }
   if(own.length) console.log("Migrated old CampusLoop listings to Firebase:",own.length);
+  localStorage.setItem(MIGFLAG,"1");
+  localStorage.removeItem(BOOKKEY);
  }catch(err){
   console.warn("Old book migration skipped:",err);
  }
 }
 
+let booksUnsub=null;
 async function loadBooksFromFirebase(){
  const fu=window.currentFirebaseUser;
  try{
   if(fu) await migrateOldOwnBooksToFirebase();
+  if(typeof booksUnsub==="function") return;
+  if(window.fbOnSnapshot && window.firebaseDb){
+   booksUnsub=fbOnSnapshot(fbCollection(window.firebaseDb,"books"), snap=>{
+    const deleted=new Set(loadDeletedIds());
+    books=snap.docs.map(d=>({...d.data(), id:d.id})).filter(b=>!deleted.has(String(b.id)));
+    render();
+   }, err=>{
+    console.warn("Books Firestore listen failed:",err);
+    window.firebaseGetBooks().then(remote=>{books=remote;render();}).catch(()=>render());
+   });
+   return;
+  }
   const remote=await window.firebaseGetBooks();
   books=remote;
   render();
@@ -359,6 +406,27 @@ function save(){ return true; }
 function safe(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
 function toast(msg){let t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.tt);window.tt=setTimeout(()=>t.classList.remove("show"),2200)}
 function bookImages(b){ if(Array.isArray(b.images)&&b.images.length) return b.images; if(b.image) return [b.image]; return []; }
+function isOwnListing(b){
+ if(!b||!user) return false;
+ const uid=String(user.uid||window.currentFirebaseUser?.uid||"");
+ if(uid && b.ownerUid && String(b.ownerUid)===uid) return true;
+ const email=String(user.email||window.currentFirebaseUser?.email||"").trim().toLowerCase();
+ if(email && String(b.email||"").trim().toLowerCase()===email) return true;
+ const name=String(user.name||"").trim().toLowerCase();
+ const seller=String(b.seller||"").trim().toLowerCase();
+ if(name && seller && name===seller){
+  const phone=String(user.phone||"").replace(/\D/g,"");
+  const bphone=String(b.phone||"").replace(/\D/g,"");
+  if(phone && bphone && phone===bphone) return true;
+  if(!b.ownerUid) return true;
+ }
+ return false;
+}
+function blockOwnChat(){
+ const msg="Apni listing par khud ko chat nahi kar sakte 😄";
+ toast(msg);
+ alert(msg);
+}
 
 function render(){
  let searchInput=document.getElementById("search");
@@ -371,7 +439,7 @@ function render(){
   const main=imgs[0]||"";
   let image=main?`<img src="${main}" alt="Book image" onclick="openPhotoViewer('${safe(String(b.id))}',0)">`:`<div class="emoji">📚</div>`;
   const countBadge=imgs.length>1?`<span class="photoCount" onclick="openPhotoViewer('${safe(String(b.id))}',0)">📷 ${imgs.length}</span>`:"";
-  const isMine = user && b.ownerUid===user.uid;
+  const isMine = isOwnListing(b);
   const extraAction = isMine
    ? `<button class="contact" onclick="editBook('${safe(String(b.id))}')" title="Edit listing">✏️ Edit</button>`
    : `<button class="contact" onclick="exchange('${safe(String(b.id))}')">🔄 Exchange</button>`;
@@ -636,9 +704,10 @@ async function addBook(){
    render();
    toast("✅ Listing updated!");
   } else {
-   bookData.id = Date.now();
+   bookData.id = String(Date.now());
+   bookData.ownerUid = user.uid;
    await saveBookToFirebase(bookData);
-   books.unshift(bookData);
+   if(!books.some(x=>String(x.id)===String(bookData.id))) books.unshift(bookData);
    closeModal();
    render();
    toast("🎉 Your book is live!");
@@ -659,7 +728,8 @@ function chatFromBook(id){
  const b=books.find(x=>String(x.id)===String(id));
  if(!b)return;
  if(!user){login("Login first to chat with the seller.");return}
- if(b.ownerUid===user.uid){toast("Apni listing par khud ko chat nahi kar sakte 😄");return}
+ if(isOwnListing(b)){blockOwnChat();return}
+ if(!b.ownerUid){toast("Seller chat available nahi hai");return}
  openChatForUser(b.ownerUid,b.seller,b.sellerPhoto||"",b.title,String(b.id));
 }
 function openChats(){
@@ -687,35 +757,54 @@ function renderChatList(){
   const photo=c.participantPhotos?.[other]||"";
   const bookTitle=c.bookTitle||"Book chat";
   const unread=Number(c[`unread_${user.uid}`]||0);
-  return `<button class="chatItem" onclick="openChatForUser('${safe(other)}','${safe(name).replace(/'/g,"&#039;")}','${safe(photo)}','${safe(bookTitle).replace(/'/g,"&#039;")}','${safe(c.bookId||"general")}')">${photoOrInitial(photo,name)}<span class="chatItemInfo"><b>${safe(name)}</b><span class="chatPreview">📚 ${safe(bookTitle)} · ${safe(c.lastMessage||"Start a conversation")}</span></span><span>${unread?`<span class="unreadBadge">${unread>99?'99+':unread}</span>`:`<span class="chatTime">${chatTime(c.lastMessageAt)}</span>`}</span></button>`;
+  return `<button class="chatItem" onclick="openChatForUser('${safe(other)}','${safe(name).replace(/'/g,"&#039;")}','${safe(photo)}','${safe(bookTitle).replace(/'/g,"&#039;")}','${safe(c.bookId||"general")}','${safe(c.id)}')">${photoOrInitial(photo,name)}<span class="chatItemInfo"><b>${safe(name)}</b><span class="chatPreview">📚 ${safe(bookTitle)} · ${safe(c.lastMessage||"Start a conversation")}</span></span><span>${unread?`<span class="unreadBadge">${unread>99?'99+':unread}</span>`:`<span class="chatTime">${chatTime(c.lastMessageAt)}</span>`}</span></button>`;
  }).join("");
 }
-async function openChatForUser(otherUid,otherName,otherPhoto,bookTitle="",bookId="general"){
+async function openChatForUser(otherUid,otherName,otherPhoto,bookTitle="",bookId="general",existingChatId){
  if(!user?.uid)return login("Login first to chat.");
- if(!otherUid||otherUid===user.uid){toast("Chat unavailable");return}
+ if(!otherUid||otherUid===user.uid){
+  const own=books.find(x=>String(x.id)===String(bookId) && isOwnListing(x));
+  if(own || otherUid===user.uid){blockOwnChat();return}
+  toast("Chat unavailable");
+  return;
+ }
  if(chatUnsub)chatUnsub();
- const cid=chatIdFor(user.uid,otherUid,bookId);currentChatId=cid;currentChatOther={uid:otherUid,name:otherName||"CampusLoop User",photo:otherPhoto||""};
+ const cid=existingChatId||chatIdFor(user.uid,otherUid,bookId);
+ currentChatId=cid;
+ currentChatOther={uid:otherUid,name:otherName||"CampusLoop User",photo:otherPhoto||""};
  const chatRef=fbDoc(window.firebaseDb,"chats",cid);
+ const known=!!existingChatId || chatCache.some(c=>c.id===cid);
  try{
-  await fbSetDoc(chatRef,{
-    participants:[user.uid,otherUid],
+  // Existing chat: never rewrite participants / bookId.
+  // Rules compare those fields exactly, so [B,A] over [A,B] was permission-denied.
+  await fbUpdateDoc(chatRef,{
+    [`participantNames.${user.uid}`]:user.name||"CampusLoop User",
+    [`participantPhotos.${user.uid}`]:user.photo||"",
+    [`unread_${user.uid}`]:0,
+    updatedAt:fbServerTimestamp()
+  });
+ }catch(err){
+  try{
+   const participants=[String(user.uid),String(otherUid)].sort();
+   await fbSetDoc(chatRef,{
+    participants,
     participantNames:{[user.uid]:user.name||"CampusLoop User",[otherUid]:otherName||"CampusLoop User"},
     participantPhotos:{[user.uid]:user.photo||"",[otherUid]:otherPhoto||""},
     bookId:String(bookId||"general"),
     bookTitle:bookTitle||"General chat",
+    createdAt:fbServerTimestamp(),
     [`unread_${user.uid}`]:0,
+    [`unread_${otherUid}`]:0,
     updatedAt:fbServerTimestamp()
-  },{merge:true});
-  try{
-   const snap=await fbGetDoc(chatRef);
-   if(snap.exists() && !snap.data().createdAt){
-    await fbUpdateDoc(chatRef,{createdAt:fbServerTimestamp(),lastMessage:"",lastMessageAt:null,lastSenderUid:"",lastMessageId:"",lastMessageStatus:"",[`unread_${otherUid}`]:0});
+   });
+  }catch(e){
+   console.error(e);
+   // Existing thread: still open messages. New thread: show the error.
+   if(!known){
+    alert("Chat start nahi ho paaya.\n\nError: "+(e.code||"")+" "+(e.message||""));
+    return;
    }
-  }catch(e){}
- }catch(e){
-  console.error(e);
-  alert("Chat start nahi ho paaya.\n\nError: "+(e.code||"")+" "+(e.message||""));
-  return;
+  }
  }
  modal(`<div class="chatBox"><div class="chatHead"><button class="chatBack" onclick="openChats()">←</button>${photoOrInitial(currentChatOther.photo,currentChatOther.name)}<div class="chatHeadInfo"><b>${safe(currentChatOther.name)}</b><small id="chatSub">${bookTitle?`📚 ${safe(bookTitle)} · Private chat`:"CampusLoop chat · Private"}</small></div></div><div id="chatMessages" class="chatMessages"><div class="chatEmpty">Loading messages…</div></div><div class="chatComposer"><button class="attachBtn" onclick="document.getElementById('chatFileInput').click()" title="Attach photo">📎</button><input id="chatFileInput" type="file" accept="image/*" style="display:none" onchange="handleChatFile(event)"><input id="chatInput" placeholder="Type a message…" autocomplete="off" onkeydown="if(event.key==='Enter')sendChatMessage()"><button onclick="sendChatMessage()">➤</button></div></div>`);
  listenMessages();
@@ -878,13 +967,13 @@ function toggleFav(id){id=String(id);let i=favs.indexOf(id);i<0?favs.push(id):fa
 
 function profile(){
  if(!user){login();return}
- let mine=books.filter(b=>(b.ownerUid&&b.ownerUid===user.uid)||(!b.ownerUid&&b.seller===user.name)),saved=books.filter(b=>favs.includes(String(b.id)));
- modal(`<div class="profile"><div class="avatar">${user.photo?`<span class="avatarFallback">${safe((user.name||"U")[0].toUpperCase())}</span><img src="${safe(user.photo)}" alt="" referrerpolicy="no-referrer" loading="eager" onload="this.style.display='block';this.previousElementSibling.style.display='none'" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:cover;border-radius:50%;display:none">`:`<span>${safe((user.name||"U")[0].toUpperCase())}</span>`}</div><h2>${safe(user.name)}</h2><p class="muted">📧 ${safe(user.email)}</p><p class="muted">🏫 ${safe(user.college||"College not added")}</p><p class="muted">📱 ${safe(user.phone||"Mobile not added")}</p><p class="muted">🎓 ${safe(user.course||"Course not added")} · ${safe(user.year||"Year not added")}</p><p class="muted">📍 ${safe(user.city||"Campus / City not added")}</p><p class="muted">🔐 Signed in with Google</p><button class="btn outline" style="margin-top:10px" onclick="showProfileSetup()">✏️ Edit Profile</button><button class="btn outline" style="margin:10px 6px 0" onclick="openChats()">💬 Open Chats</button></div>
- <h3 style="margin-top:22px">My Listings (${mine.length})</h3>
- ${mine.length?mine.map(b=>`<div class="mybook"><div class="mbInfo"><b>${safe(b.title)}</b><div class="muted">₹${b.price}</div></div><div class="mbActions"><button class="editBtn" title="Edit listing" onclick="editBook('${safe(String(b.id))}')">✏️</button><button class="danger" onclick="deleteBook('${safe(String(b.id))}')">Delete</button></div></div>`).join(""):`<p class="muted" style="margin-top:12px">No books listed yet.</p>`}
- <h3 style="margin-top:22px">❤️ Favourites (${saved.length})</h3>
- ${saved.length?saved.map(b=>`<div class="mybook" style="display:flex;align-items:center;justify-content:space-between;gap:10px"><div class="mbInfo"><b>${safe(b.title)}</b><div class="muted">₹${b.price}</div></div><button class="btn outline" onclick="viewFavBook('${safe(String(b.id))}')" title="View book">👁️</button></div>`).join(""):`<p class="muted" style="margin-top:12px">No favourites yet.</p>`}
- <button class="btn primary" style="margin-top:18px" onclick="logout()">Logout</button>`);
+ let mine=books.filter(b=>isOwnListing(b)),saved=books.filter(b=>favs.includes(String(b.id)));
+ modal(`<div class="profile"><div class="avatar">${user.photo?`<span class="avatarFallback">${safe((user.name||"U")[0].toUpperCase())}</span><img src="${safe(user.photo)}" alt="" referrerpolicy="no-referrer" loading="eager" onload="this.style.display='block';this.previousElementSibling.style.display='none'" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:cover;border-radius:50%;display:none">`:`<span>${safe((user.name||"U")[0].toUpperCase())}</span>`}</div><h2>${safe(user.name)}</h2><p class="muted">📧 ${safe(user.email)}</p><p class="muted">🏫 ${safe(user.college||"College not added")}</p><p class="muted">📱 ${safe(user.phone||"Mobile not added")}</p><p class="muted">🎓 ${safe(user.course||"Course not added")} · ${safe(user.year||"Year not added")}</p><p class="muted">📍 ${safe(user.city||"Campus / City not added")}</p><p class="muted">🔐 Signed in with Google</p><div class="profileActions"><button class="btn primary" onclick="showProfileSetup()">✏️ Edit Profile</button><button class="btn primary" onclick="openChats()">💬 Open Chats</button></div></div>
+ <div class="profileBox"><h3>📚 My Listings (${mine.length})</h3>
+ ${mine.length?mine.map(b=>`<div class="mybook"><div class="mbInfo"><b>${safe(b.title)}</b><div class="muted">₹${b.price}</div></div><div class="mbActions"><button class="editBtn" title="Edit listing" onclick="editBook('${safe(String(b.id))}')">✏️</button><button class="danger" onclick="deleteBook('${safe(String(b.id))}')">Delete</button></div></div>`).join(""):`<p class="emptyNote">No books listed yet.</p>`}</div>
+ <div class="profileBox"><h3>❤️ Favourites (${saved.length})</h3>
+ ${saved.length?saved.map(b=>`<div class="mybook"><div class="mbInfo"><b>${safe(b.title)}</b><div class="muted">₹${b.price}</div></div><div class="mbActions"><button class="viewBtn" onclick="viewFavBook('${safe(String(b.id))}')" title="View book">👁️</button></div></div>`).join(""):`<p class="emptyNote">No favourites yet.</p>`}</div>
+ <button class="btn primary" style="margin-top:18px;width:100%" onclick="logout()">Logout</button>`);
 }
 function viewFavBook(id){
  const b=books.find(x=>String(x.id)===String(id));
@@ -914,7 +1003,8 @@ async function deleteBook(id){
  if(!b)return;
  if(b.ownerUid && user && b.ownerUid!==user.uid){alert("You can delete only your own listing.");return}
  try{
-  if(b.ownerUid) await deleteBookFromFirebase(id);
+  await deleteBookFromFirebase(id);
+  markBookDeleted(id);
   books=books.filter(x=>String(x.id)!==String(id));
   favs=favs.filter(x=>String(x)!==String(id));
   saveAccountFavs(user.uid);
