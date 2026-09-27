@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CampusLoop | Student Book Marketplace</title>
 <style>
 :root{--p:#5b4bdb;--p2:#7c6cf0;--ink:#172033;--muted:#737b8c;--bg:#f6f7fb;--card:#fff;--line:#e7e8ef;--green:#18a77a;--orange:#ff965c}
@@ -53,57 +53,8 @@ header{position:sticky;top:0;z-index:20;background:#ffffffee;backdrop-filter:blu
 .profileBox .emptyNote{margin:8px 0 4px;color:var(--muted);font-size:13px}
 .toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%) translateY(20px);background:#182033;color:#fff;padding:12px 17px;border-radius:10px;opacity:0;pointer-events:none;transition:.25s;z-index:300;font-size:13px}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 footer{text-align:center;color:var(--muted);padding:30px 15px}
-
-.modal.chatMode{padding:0;align-items:stretch;justify-content:stretch;background:#0b141a}
-.modal.chatMode .box{width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;padding:0;overflow:hidden;display:flex;flex-direction:column;background:#efeae2}
-.modal.chatMode .close{display:none}
-.modal.chatMode #content{flex:1;height:100%;min-height:0;display:flex;flex-direction:column;overflow:hidden}
-.waShell,.chatBox{width:100%;height:100%;max-height:none;display:flex;flex-direction:column;overflow:hidden;background:#efeae2}
-.waListHead,.chatHead{flex-shrink:0;display:flex;align-items:center;gap:10px;padding:10px 12px;background:#075e54;color:#fff;min-height:60px}
-.waListHead b{font-size:20px;flex:1}
-.waListHead .chatBack,.chatBack,.chatHeadDel{border:0;background:#ffffff22;color:#fff;border-radius:50%;width:38px;height:38px;display:grid;place-items:center;font-size:18px;padding:0}
-.chatAvatar{width:40px;height:40px;border-radius:50%;object-fit:cover;background:#128c7e;display:grid;place-items:center;font-weight:900;color:#fff;flex-shrink:0}
-.chatHeadInfo{flex:1;min-width:0}
-.chatHeadInfo b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.chatHeadInfo small{color:#d7f5ef;font-size:12px}
-.chatMessages{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:10px 10px 8px;background:#efeae2}
-.dayChip{display:flex;justify-content:center;margin:10px 0}
-.dayChip span{background:#ffffffcc;color:#54656f;font-size:11px;font-weight:800;padding:5px 10px;border-radius:8px;box-shadow:0 1px 1px #0001}
-.bubbleRow{display:flex;margin:3px 0}
-.bubbleRow.mine{justify-content:flex-end}
-.bubble{max-width:78%;padding:6px 8px 4px 9px;border-radius:8px 8px 8px 2px;background:#fff;box-shadow:0 1px 1px #0000001a;font-size:14.2px;line-height:1.35;cursor:pointer;position:relative}
-.mine .bubble{background:#d9fdd3;border-radius:8px 8px 2px 8px}
-.bubble img{max-width:100%;border-radius:8px;display:block;margin-bottom:4px}
-.bubbleMeta{display:flex;justify-content:flex-end;gap:4px;align-items:center;margin-top:2px;font-size:11px;color:#667781}
-.tick{font-weight:900;letter-spacing:-2px;color:#667781;font-size:13px}
-.tick.blue{color:#53bdeb}
-.chatComposer{flex-shrink:0;display:flex;gap:8px;padding:8px;align-items:flex-end;background:#f0f2f5}
-.chatComposer input{flex:1;border:0;border-radius:24px;padding:11px 16px;background:#fff;outline:none}
-.chatComposer .sendBtn{width:46px;height:46px;border:0;border-radius:50%;background:#00a884;color:#fff;font-weight:900;font-size:18px;display:grid;place-items:center;flex-shrink:0}
-.chatComposer .attachBtn{width:44px;height:46px;border:0;border-radius:50%;background:transparent;color:#54656f;font-size:22px;display:grid;place-items:center;flex-shrink:0}
-.chatList{display:block;flex:1;overflow:auto;margin:0;background:#fff}
-.chatItemRow{display:flex;align-items:stretch;border-bottom:1px solid #f0f2f5;background:#fff}
-.chatItem{display:flex;align-items:center;gap:12px;padding:12px 8px 12px 14px;border:0;border-radius:0;background:#fff;text-align:left;flex:1;min-width:0}
-.chatItem:hover{background:#f5f6f6}
-.chatItemInfo{flex:1;min-width:0}
-.chatItemTop{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
-.chatItemInfo b{font-size:16px;font-weight:700;color:#111b21}
-.chatPreview{display:block;font-size:13px;color:#667781;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.chatTime{font-size:12px;color:#667781;flex-shrink:0}
-.unreadBadge{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:#25d366;color:#fff;font-size:11px;display:grid;place-items:center;font-weight:900;margin-right:4px}
-.chatDel{border:0;width:44px;background:#fff;color:#e94b4b;font-size:16px;flex-shrink:0}
-.chatDel:hover{background:#ffe9e9}
-.chatEmpty{padding:40px 24px;text-align:center;color:#667781;background:transparent;border:0}
-.msgMenu{position:fixed;background:#fff;border:0;border-radius:12px;box-shadow:0 8px 28px #0003;padding:6px;z-index:500;min-width:220px;display:flex;flex-direction:column;gap:0;animation:pop .12s ease-out}
-@keyframes pop{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
-.msgMenu button{border:0;background:transparent;padding:12px 16px;text-align:left;border-radius:8px;font-size:15px;font-weight:600;color:#111b21}
-.msgMenu button:hover{background:#f5f6f6}
-.msgMenu button.dangerBtn{color:#e94b4b}
-.msgMenu button.dangerBtn:hover{background:#ffe9e9;color:#c33}
-@media(min-width:641px){
-  .modal.chatMode{padding:18px;align-items:center;justify-content:center;background:#0008}
-  .modal.chatMode .box{width:min(520px,100%);height:min(88dvh,820px);max-height:92dvh;border-radius:16px}
-}
+.chatBox{width:min(560px,100%);height:min(88vh,760px);max-height:92vh;padding:0;display:flex;flex-direction:column;overflow:hidden}.chatHead{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line);background:#fff}.chatAvatar{width:42px;height:42px;border-radius:50%;object-fit:cover;background:#eee;display:grid;place-items:center;font-weight:900;color:#fff}.chatHeadInfo{flex:1}.chatHeadInfo b{display:block}.chatHeadInfo small{color:var(--muted)}.chatBack{border:0;background:#f0f1f5;border-radius:9px;padding:8px 10px}.chatMessages{flex:1;overflow:auto;padding:16px;background:#f4f5f8}.bubbleRow{display:flex;margin:6px 0}.bubbleRow.mine{justify-content:flex-end}.bubble{max-width:78%;padding:9px 11px;border-radius:14px;background:#fff;box-shadow:0 2px 7px #1720330c;font-size:14px;line-height:1.4;cursor:pointer;transition:filter .15s}.bubble:hover{filter:brightness(0.98)}.mine .bubble{background:#e7e2ff}.bubble img{max-width:100%;border-radius:10px;display:block;margin-bottom:5px}.bubbleMeta{display:flex;justify-content:flex-end;gap:5px;align-items:center;margin-top:3px;font-size:10px;color:#7b8190}.tick{font-weight:900;letter-spacing:-2px;color:#7b8190}.tick.blue{color:#1686ff}.chatComposer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:#fff}.chatComposer input{flex:1}.chatComposer button{width:48px;border:0;border-radius:10px;background:var(--p);color:#fff;font-weight:900}.chatComposer .attachBtn{width:44px;border:0;border-radius:10px;background:#f0f1f5;color:#596174;font-size:18px;font-weight:900;display:grid;place-items:center;cursor:pointer}.chatComposer .attachBtn:hover{background:#e6e6ef}.chatList{display:grid;gap:8px;margin-top:12px}.chatItem{display:flex;align-items:center;gap:11px;padding:11px;border:1px solid var(--line);border-radius:13px;background:#fff;text-align:left;width:100%}.chatItem:hover{background:#f8f7ff}.chatItemInfo{flex:1;min-width:0}.chatItemInfo b,.chatPreview{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chatPreview{font-size:12px;color:var(--muted);margin-top:3px}.chatTime{font-size:10px;color:var(--muted)}.unreadBadge{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--p);color:#fff;font-size:10px;display:grid;place-items:center;font-weight:900}.chatEmpty{padding:30px;text-align:center;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:14px}
+.msgMenu{position:fixed;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px #17203330;padding:6px;z-index:500;min-width:200px;display:flex;flex-direction:column;gap:2px;animation:pop .12s ease-out}@keyframes pop{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}.msgMenu button{border:0;background:transparent;padding:10px 14px;text-align:left;border-radius:8px;font-size:13px;font-weight:700;color:var(--ink)}.msgMenu button:hover{background:#f0efff;color:var(--p)}.msgMenu button.dangerBtn:hover{background:#ffe9e9;color:#c33}
 
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.navlinks button{font-size:10px;padding:7px 5px}.brand{font-size:18px}.brandIcon{width:34px;height:34px;font-size:18px}.wrap{padding:16px 13px 105px}.hero{padding:25px}.hero h1{font-size:34px}.search{flex-direction:column}.stats{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.head{align-items:flex-start;gap:10px}.head .btn{font-size:11px;padding:9px}}
@@ -503,64 +454,8 @@ function updateStats(){
 document.getElementById("statFav").textContent = favs.filter(id => validFavs.has(String(id))).length;
 }
 function setFilter(x,el){filter=x;document.querySelectorAll(".filter").forEach(b=>b.classList.remove("active"));el.classList.add("active");render()}
-function modal(x,opts){
- const m=document.getElementById("modal");
- const isChat=!!(opts&&opts.chat);
- m.classList.toggle("chatMode", isChat);
- if(!isChat) resetChatViewport();
- document.getElementById("content").innerHTML=x;
- m.style.display="flex";
- if(isChat) attachChatKeyboard();
-}
-function closeModal(){
- resetChatViewport();
- const m=document.getElementById("modal");
- m.style.display="none";
- m.classList.remove("chatMode");
- if(messageUnsub){messageUnsub();messageUnsub=null;}
- if(chatUnsub){chatUnsub();chatUnsub=null;}
- currentChatId=null;currentChatOther=null;editingBookId=null;closeMsgMenu();
-}
-let chatKbBound=false;
-function fitChatToKeyboard(){
- const m=document.getElementById("modal");
- if(!m||m.style.display==="none"||!m.classList.contains("chatMode")) return;
- const vv=window.visualViewport;
- if(vv){
-  m.style.position="fixed";
-  m.style.top=Math.round(vv.offsetTop)+"px";
-  m.style.left=Math.round(vv.offsetLeft)+"px";
-  m.style.width=Math.round(vv.width)+"px";
-  m.style.height=Math.max(240, Math.round(vv.height))+"px";
-  m.style.right="auto";
-  m.style.bottom="auto";
-  m.style.inset="auto";
- }
- const msgs=document.getElementById("chatMessages");
- if(msgs && (msgs.scrollHeight-msgs.scrollTop-msgs.clientHeight<120)){
-  msgs.scrollTop=msgs.scrollHeight;
- }
-}
-function attachChatKeyboard(){
- if(!chatKbBound){
-  const vv=window.visualViewport;
-  if(vv){
-   vv.addEventListener("resize", fitChatToKeyboard);
-   vv.addEventListener("scroll", fitChatToKeyboard);
-  }
-  window.addEventListener("resize", fitChatToKeyboard);
-  chatKbBound=true;
- }
- fitChatToKeyboard();
- setTimeout(fitChatToKeyboard, 80);
- setTimeout(fitChatToKeyboard, 320);
-}
-function resetChatViewport(){
- const m=document.getElementById("modal");
- if(!m) return;
- m.style.top=""; m.style.left=""; m.style.width=""; m.style.height="";
- m.style.right=""; m.style.bottom=""; m.style.inset="";
-}
+function modal(x){document.getElementById("content").innerHTML=x;document.getElementById("modal").style.display="flex"}
+function closeModal(){document.getElementById("modal").style.display="none";if(messageUnsub){messageUnsub();messageUnsub=null;}if(chatUnsub){chatUnsub();chatUnsub=null;}currentChatId=null;currentChatOther=null;editingBookId=null;closeMsgMenu();}
 
 function login(msg=""){
  modal(`<h2>👋 Welcome to CampusLoop</h2>
@@ -837,35 +732,10 @@ function chatFromBook(id){
  if(!b.ownerUid){toast("Seller chat available nahi hai");return}
  openChatForUser(b.ownerUid,b.seller,b.sellerPhoto||"",b.title,String(b.id));
 }
-function hiddenChatsKey(){return "campusloop_hidden_chats_"+(user&&user.uid||"anon")}
-function getHiddenChats(){try{return JSON.parse(localStorage.getItem(hiddenChatsKey())||"[]")}catch(e){return []}}
-function addHiddenChat(id){const a=getHiddenChats();if(!a.includes(id)){a.push(id);localStorage.setItem(hiddenChatsKey(),JSON.stringify(a));}}
-function removeHiddenChat(id){localStorage.setItem(hiddenChatsKey(),JSON.stringify(getHiddenChats().filter(x=>x!==id)));}
-function isChatHidden(c){
- if(!c) return false;
- if(c["hidden_"+user.uid]===true) return true;
- return getHiddenChats().includes(c.id);
-}
-async function deleteChatForMe(chatId){
- if(!chatId) return;
- if(!confirm("Is chat ko delete karna hai? Sirf aapke liye hide hogi.")) return;
- addHiddenChat(chatId);
- try{
-  await fbUpdateDoc(fbDoc(window.firebaseDb,"chats",chatId),{
-   ["hidden_"+user.uid]:true,
-   ["unread_"+user.uid]:0,
-   updatedAt:fbServerTimestamp()
-  });
- }catch(e){console.warn(e)}
- toast("Chat deleted");
- openChats();
-}
 function openChats(){
  if(!user||!user.uid){login("Login first to open Chats.");return}
  if(chatUnsub)chatUnsub();
- if(messageUnsub){messageUnsub();messageUnsub=null;}
- currentChatId=null; currentChatOther=null;
- modal(`<div class="waShell"><div class="waListHead"><b>Chats</b><button class="chatBack" onclick="closeModal()" title="Close">✕</button></div><div id="chatList" class="chatList"><div class="chatEmpty">Loading chats…</div></div></div>`,{chat:true});
+ modal(`<h2>💬 Chats</h2><p class="muted">Buyer ↔ Seller conversations, real-time Firebase chat.</p><div id="chatList" class="chatList"><div class="chatEmpty">Loading chats…</div></div>`);
  listenChatList();
 }
 function listenChatList(){
@@ -878,26 +748,16 @@ function listenChatList(){
   renderChatList();
  },err=>{console.error(err);const el=document.getElementById("chatList");if(el)el.innerHTML='<div class="chatEmpty">Chats load nahi ho paaye. Firestore rules check karo.</div>';});
 }
-function previewText(c){
- if(!c) return "Start a conversation";
- if(c.lastMessage==="📷 Photo") return "📷 Photo";
- if(!c.lastMessage || c.lastMessage==="") return "This message was deleted";
- return c.lastMessage;
-}
 function renderChatList(){
  const el=document.getElementById("chatList");if(!el)return;
- const list=chatCache.filter(c=>!isChatHidden(c));
- if(!list.length){el.innerHTML='<div class="chatEmpty">Abhi koi chat nahi hai.<br><br>Book card par 💬 Chat dabao.</div>';return;}
- el.innerHTML=list.map(c=>{
+ if(!chatCache.length){el.innerHTML='<div class="chatEmpty">Abhi koi chat nahi hai.<br><br>Book card par 💬 Chat dabao.</div>';return;}
+ el.innerHTML=chatCache.map(c=>{
   const other=(c.participants||[]).find(x=>x!==user.uid)||"";
   const name=c.participantNames?.[other]||"CampusLoop User";
   const photo=c.participantPhotos?.[other]||"";
   const bookTitle=c.bookTitle||"Book chat";
   const unread=Number(c[`unread_${user.uid}`]||0);
-  const jsName=safe(name).replace(/'/g,"&#039;");
-  const jsPhoto=safe(photo);
-  const jsTitle=safe(bookTitle).replace(/'/g,"&#039;");
-  return `<div class="chatItemRow"><button class="chatItem" onclick="openChatForUser('${safe(other)}','${jsName}','${jsPhoto}','${jsTitle}','${safe(c.bookId||"general")}','${safe(c.id)}')">${photoOrInitial(photo,name)}<span class="chatItemInfo"><span class="chatItemTop"><b>${safe(name)}</b><span class="chatTime">${chatTime(c.lastMessageAt)}</span></span><span class="chatPreview">${unread?"🟢 ":""}📚 ${safe(bookTitle)} · ${safe(previewText(c))}</span></span>${unread?`<span class="unreadBadge">${unread>99?"99+":unread}</span>`:""}</button><button class="chatDel" title="Delete chat" onclick="deleteChatForMe('${safe(c.id)}')">🗑️</button></div>`;
+  return `<button class="chatItem" onclick="openChatForUser('${safe(other)}','${safe(name).replace(/'/g,"&#039;")}','${safe(photo)}','${safe(bookTitle).replace(/'/g,"&#039;")}','${safe(c.bookId||"general")}','${safe(c.id)}')">${photoOrInitial(photo,name)}<span class="chatItemInfo"><b>${safe(name)}</b><span class="chatPreview">📚 ${safe(bookTitle)} · ${safe(c.lastMessage||"Start a conversation")}</span></span><span>${unread?`<span class="unreadBadge">${unread>99?'99+':unread}</span>`:`<span class="chatTime">${chatTime(c.lastMessageAt)}</span>`}</span></button>`;
  }).join("");
 }
 async function openChatForUser(otherUid,otherName,otherPhoto,bookTitle="",bookId="general",existingChatId){
@@ -912,15 +772,15 @@ async function openChatForUser(otherUid,otherName,otherPhoto,bookTitle="",bookId
  const cid=existingChatId||chatIdFor(user.uid,otherUid,bookId);
  currentChatId=cid;
  currentChatOther={uid:otherUid,name:otherName||"CampusLoop User",photo:otherPhoto||""};
- removeHiddenChat(cid);
  const chatRef=fbDoc(window.firebaseDb,"chats",cid);
  const known=!!existingChatId || chatCache.some(c=>c.id===cid);
  try{
+  // Existing chat: never rewrite participants / bookId.
+  // Rules compare those fields exactly, so [B,A] over [A,B] was permission-denied.
   await fbUpdateDoc(chatRef,{
     [`participantNames.${user.uid}`]:user.name||"CampusLoop User",
     [`participantPhotos.${user.uid}`]:user.photo||"",
     [`unread_${user.uid}`]:0,
-    [`hidden_${user.uid}`]:false,
     updatedAt:fbServerTimestamp()
   });
  }catch(err){
@@ -935,19 +795,20 @@ async function openChatForUser(otherUid,otherName,otherPhoto,bookTitle="",bookId
     createdAt:fbServerTimestamp(),
     [`unread_${user.uid}`]:0,
     [`unread_${otherUid}`]:0,
-    [`hidden_${user.uid}`]:false,
     updatedAt:fbServerTimestamp()
    });
   }catch(e){
    console.error(e);
+   // Existing thread: still open messages. New thread: show the error.
    if(!known){
     alert("Chat start nahi ho paaya.\n\nError: "+(e.code||"")+" "+(e.message||""));
     return;
    }
   }
  }
- modal(`<div class="chatBox"><div class="chatHead"><button class="chatBack" onclick="openChats()" title="Back">‹</button>${photoOrInitial(currentChatOther.photo,currentChatOther.name)}<div class="chatHeadInfo"><b>${safe(currentChatOther.name)}</b><small id="chatSub">${bookTitle?`📚 ${safe(bookTitle)}`:"CampusLoop chat"}</small></div><button class="chatHeadDel" title="Delete chat" onclick="deleteChatForMe('${safe(cid)}')">🗑️</button></div><div id="chatMessages" class="chatMessages"><div class="chatEmpty">Loading messages…</div></div><div class="chatComposer"><button class="attachBtn" onclick="document.getElementById('chatFileInput').click()" title="Attach photo">📎</button><input id="chatFileInput" type="file" accept="image/*" style="display:none" onchange="handleChatFile(event)"><input id="chatInput" placeholder="Message" autocomplete="off" enterkeyhint="send" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChatMessage()}" onfocus="setTimeout(fitChatToKeyboard,50);setTimeout(fitChatToKeyboard,280)"><button class="sendBtn" onclick="sendChatMessage()">➤</button></div></div>`,{chat:true});
+ modal(`<div class="chatBox"><div class="chatHead"><button class="chatBack" onclick="openChats()">←</button>${photoOrInitial(currentChatOther.photo,currentChatOther.name)}<div class="chatHeadInfo"><b>${safe(currentChatOther.name)}</b><small id="chatSub">${bookTitle?`📚 ${safe(bookTitle)} · Private chat`:"CampusLoop chat · Private"}</small></div></div><div id="chatMessages" class="chatMessages"><div class="chatEmpty">Loading messages…</div></div><div class="chatComposer"><button class="attachBtn" onclick="document.getElementById('chatFileInput').click()" title="Attach photo">📎</button><input id="chatFileInput" type="file" accept="image/*" style="display:none" onchange="handleChatFile(event)"><input id="chatInput" placeholder="Type a message…" autocomplete="off" onkeydown="if(event.key==='Enter')sendChatMessage()"><button onclick="sendChatMessage()">➤</button></div></div>`);
  listenMessages();
+ setTimeout(()=>document.getElementById("chatInput")?.focus(),100);
 }
 function listenMessages(){
  if(messageUnsub)messageUnsub();
@@ -961,104 +822,85 @@ function listenMessages(){
   try{await fbUpdateDoc(fbDoc(window.firebaseDb,"chats",currentChatId),{[`unread_${user.uid}`]:0});}catch(e){}
  },err=>{console.error(err);const el=document.getElementById("chatMessages");if(el)el.innerHTML='<div class="chatEmpty">Messages load nahi ho paaye. Rules check karo.</div>';});
 }
-function hiddenMsgsKey(){return "campusloop_hidden_msgs_"+currentChatId;}
-function getHiddenMsgs(){try{return JSON.parse(localStorage.getItem(hiddenMsgsKey())||"[]")}catch(e){return []}}
+function hiddenMsgsKey(){return 'campusloop_hidden_msgs_'+currentChatId;}
+function getHiddenMsgs(){try{return JSON.parse(localStorage.getItem(hiddenMsgsKey())||'[]')}catch(e){return []}}
 function addHiddenMsg(id){const a=getHiddenMsgs();if(!a.includes(id)){a.push(id);localStorage.setItem(hiddenMsgsKey(),JSON.stringify(a));}}
-function msgDateKey(ts){try{const d=ts?.toDate?ts.toDate():new Date(ts);return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();}catch(e){return ""}}
-function dayLabel(ts){
- try{
-  const d=ts?.toDate?ts.toDate():new Date(ts);
-  const today=new Date(); today.setHours(0,0,0,0);
-  const that=new Date(d); that.setHours(0,0,0,0);
-  const diff=Math.round((today-that)/86400000);
-  if(diff===0) return "Today";
-  if(diff===1) return "Yesterday";
-  return d.toLocaleDateString([], {day:"numeric",month:"short",year:"numeric"});
- }catch(e){return ""}
-}
 function renderMessages(msgs){
  const el=document.getElementById("chatMessages");if(!el)return;
  if(!msgs.length){el.innerHTML='<div class="chatEmpty">No messages yet.<br>Say hi 👋</div>';return;}
  const hidden=getHiddenMsgs();
  const visible=msgs.filter(m=>!hidden.includes(m.id));
  if(!visible.length){el.innerHTML='<div class="chatEmpty">No messages here.<br>Say hi 👋</div>';return;}
- let lastDay="";
  el.innerHTML=visible.map(m=>{
   const isMine=m.senderUid===user.uid;
   const deleted=!!m.deletedForEveryone;
   const img=(!deleted&&m.image)?`<img src="${m.image}" alt="photo">`:"";
-  const txt=deleted?`<i style="color:#667781">🚫 This message was deleted</i>`:((m.text&&m.text!=="📷 Photo")?safe(m.text):"");
-  const day=msgDateKey(m.createdAt);
-  const chip=day&&day!==lastDay?`<div class="dayChip"><span>${dayLabel(m.createdAt)}</span></div>`:"";
-  lastDay=day||lastDay;
-  return `${chip}<div class="bubbleRow ${isMine?"mine":""}"><div class="bubble" onclick="openMsgMenu(event,'${safe(String(m.id))}',${isMine},${deleted})">${img}${txt}<div class="bubbleMeta"><span>${chatTime(m.createdAt)}</span>${chatStatus(m)}</div></div></div>`;
+  const txt=deleted?`<i style="color:#999">🚫 This message was deleted</i>`:((m.text&&m.text!=="📷 Photo")?safe(m.text):"");
+  return `<div class="bubbleRow ${isMine?'mine':''}"><div class="bubble" onclick="openMsgMenu(event,'${safe(String(m.id))}',${isMine},${deleted})">${img}${txt}<div class="bubbleMeta"><span>${chatTime(m.createdAt)}</span>${chatStatus(m)}</div></div></div>`;
  }).join("");
  el.scrollTop=el.scrollHeight;
- fitChatToKeyboard();
 }
 
+/* ===== Message action menu ===== */
 function closeMsgMenu(){
- const m=document.getElementById("msgMenu");
+ const m=document.getElementById('msgMenu');
  if(m)m.remove();
 }
 function openMsgMenu(event,msgId,isMine,deleted){
  event.stopPropagation();
  closeMsgMenu();
+ if(deleted && !isMine) return; // nothing to do
  const rect=event.currentTarget.getBoundingClientRect();
- const menu=document.createElement("div");
- menu.className="msgMenu";
- menu.id="msgMenu";
+ const menu=document.createElement('div');
+ menu.className='msgMenu';
+ menu.id='msgMenu';
  const opts=[];
- if(!deleted){
-  const msg=lastMessages.find(x=>String(x.id)===String(msgId));
-  if(msg && msg.text && msg.text!=="📷 Photo") opts.push({label:"📋 Copy",action:"copy",danger:false});
- }
- if(isMine && !deleted) opts.push({label:"🗑️ Delete for everyone",action:"everyone",danger:true});
- opts.push({label:"🚫 Delete for me",action:"me",danger:false});
- opts.push({label:"✖️ Cancel",action:"cancel",danger:false});
- menu.innerHTML=opts.map(o=>`<button class="${o.danger?"dangerBtn":""}" data-action="${o.action}" data-msg="${safe(String(msgId))}" data-mine="${isMine?"1":"0"}">${o.label}</button>`).join("");
+ if(isMine && !deleted) opts.push({label:'🗑️ Delete for everyone',action:'everyone',danger:true});
+ opts.push({label:'🚫 Delete for me',action:'me',danger:false});
+ opts.push({label:'✖️ Cancel',action:'cancel',danger:false});
+ menu.innerHTML=opts.map(o=>`<button class="${o.danger?'dangerBtn':''}" data-action="${o.action}" data-msg="${safe(String(msgId))}" data-mine="${isMine?'1':'0'}">${o.label}</button>`).join('');
  document.body.appendChild(menu);
- menu.addEventListener("touchstart", ev=>ev.stopPropagation());
- menu.addEventListener("click", ev=>ev.stopPropagation());
+ // Stop taps inside the menu from bubbling to document (which would
+ // otherwise close the menu on touchstart before the button's click fires,
+ // and let the tap fall through to whatever bubble is underneath it).
+ menu.addEventListener('touchstart', ev=>ev.stopPropagation());
+ menu.addEventListener('click', ev=>ev.stopPropagation());
+ // Position
  const mw=menu.offsetWidth, mh=menu.offsetHeight;
  let left=rect.left, top=rect.top-mh-8;
  if(top<10) top=rect.bottom+8;
  if(left+mw>window.innerWidth-10) left=window.innerWidth-mw-10;
  if(left<10) left=10;
  if(top+mh>window.innerHeight-10) top=window.innerHeight-mh-10;
- menu.style.left=left+"px";
- menu.style.top=top+"px";
- menu.querySelectorAll("button").forEach(btn=>{
-  btn.addEventListener("click", ev=>{
+ menu.style.left=left+'px';
+ menu.style.top=top+'px';
+ // Bind clicks
+ menu.querySelectorAll('button').forEach(btn=>{
+  btn.addEventListener('click', ev=>{
    ev.stopPropagation();
-   handleMsgAction(btn.dataset.action, btn.dataset.msg, btn.dataset.mine==="1");
+   handleMsgAction(btn.dataset.action, btn.dataset.msg, btn.dataset.mine==='1');
   });
  });
+ // Close on outside click/tap
  setTimeout(()=>{
-  document.addEventListener("click", closeMsgMenu, {once:true});
-  document.addEventListener("touchstart", closeMsgMenu, {once:true});
+  document.addEventListener('click', closeMsgMenu, {once:true});
+  document.addEventListener('touchstart', closeMsgMenu, {once:true});
  },0);
 }
 async function handleMsgAction(action,msgId,isMine){
  closeMsgMenu();
- if(action==="cancel") return;
- if(action==="copy"){
-  const m=lastMessages.find(x=>String(x.id)===String(msgId));
-  const txt=(m&&!m.deletedForEveryone&&m.text&&m.text!=="📷 Photo")?m.text:"";
-  if(txt){ try{ await navigator.clipboard.writeText(txt); toast("Copied"); }catch(e){ toast("Copy nahi hua"); } }
-  return;
- }
- if(action==="me"){
+ if(action==='cancel') return;
+ if(action==='me'){
   addHiddenMsg(msgId);
   renderMessages(lastMessages);
   toast("Message deleted for you");
   return;
  }
- if(action==="everyone"){
+ if(action==='everyone'){
   try{
-   await fbUpdateDoc(fbDoc(window.firebaseDb,"chats",currentChatId,"messages",msgId),{
+   await fbUpdateDoc(fbDoc(window.firebaseDb,'chats',currentChatId,'messages',msgId),{
     deletedForEveryone:true,
-    text:"",
+    text:'',
     image:null,
     deletedAt:fbServerTimestamp()
    });
@@ -1091,7 +933,7 @@ async function sendChatImage(dataUrl){
    bookId:String(currentChatId.split("__BOOK__")[1]||"general"),
    createdAt:fbServerTimestamp(),status:"sent",deliveredAt:null,readAt:null
   });
-  await fbUpdateDoc(chatRef,{lastMessage:"📷 Photo",lastMessageAt:fbServerTimestamp(),lastSenderUid:user.uid,lastMessageId:msgRef.id,lastMessageStatus:"sent",[`unread_${currentChatOther.uid}`]:fbIncrement(1),[`hidden_${currentChatOther.uid}`]:false,updatedAt:fbServerTimestamp()});
+  await fbUpdateDoc(chatRef,{lastMessage:"📷 Photo",lastMessageAt:fbServerTimestamp(),lastSenderUid:user.uid,lastMessageId:msgRef.id,lastMessageStatus:"sent",[`unread_${currentChatOther.uid}`]:fbIncrement(1),updatedAt:fbServerTimestamp()});
  }catch(e){console.error(e);alert("Photo send nahi hui: "+(e.message||""));}
 }
 async function sendChatMessage(){
@@ -1100,11 +942,10 @@ async function sendChatMessage(){
  try{
   const chatRef=fbDoc(window.firebaseDb,"chats",currentChatId);
   const msgRef=await fbAddDoc(fbCollection(chatRef,"messages"),{senderUid:user.uid,receiverUid:currentChatOther.uid,text,bookId:String(currentChatId.split("__BOOK__")[1]||"general"),createdAt:fbServerTimestamp(),status:"sent",deliveredAt:null,readAt:null});
-  await fbUpdateDoc(chatRef,{lastMessage:text,lastMessageAt:fbServerTimestamp(),lastSenderUid:user.uid,lastMessageId:msgRef.id,lastMessageStatus:"sent",[`unread_${currentChatOther.uid}`]:fbIncrement(1),[`hidden_${currentChatOther.uid}`]:false,updatedAt:fbServerTimestamp()});
+  await fbUpdateDoc(chatRef,{lastMessage:text,lastMessageAt:fbServerTimestamp(),lastSenderUid:user.uid,lastMessageId:msgRef.id,lastMessageStatus:"sent",[`unread_${currentChatOther.uid}`]:fbIncrement(1),updatedAt:fbServerTimestamp()});
   input.value="";
  }catch(e){console.error(e);alert("Message send nahi hua. Firestore chat rules check karo.\n\n"+(e.message||""));}
  input.disabled=false;input.focus();
- setTimeout(()=>{const el=document.getElementById("chatMessages"); if(el) el.scrollTop=el.scrollHeight; fitChatToKeyboard();},30);
 }
 
 function buyBook(id){
