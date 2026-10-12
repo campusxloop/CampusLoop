@@ -72,6 +72,7 @@ footer{text-align:center;color:var(--muted);padding:30px 15px}
 .replyBar b,.replyQuote b{display:block;font-size:11px;color:var(--p)}
 .replyBar span.rbText{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .replyBar button{border:0;background:#e9e8f5;border-radius:50%;width:24px;height:24px;font-size:12px}
+.bookTag{display:inline-block;max-width:100%;font-size:11px;font-weight:800;color:var(--p);background:#0000000d;border-radius:8px;padding:3px 8px;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:top}
 .replyQuote{border-left:3px solid var(--p);background:#0000000a;border-radius:8px;padding:5px 8px;margin-bottom:6px;font-size:12px;color:#596174}
 .replyQuote span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 </style>
@@ -736,7 +737,7 @@ async function addBook(){
 }
 
 let chatUnsub=null, messageUnsub=null, currentChatId=null, currentChatOther=null, chatCache=[];
-function chatIdFor(a,b,bookId){return [String(a),String(b)].sort().join("__BOOK__"+String(bookId||"general"));}
+function chatIdFor(a,b){return [String(a),String(b)].sort().join("__BOOK__general");}
 function initials(name){return safe((name||"U").trim().split(/\s+/).map(x=>x[0]).join("").slice(0,2).toUpperCase());}
 function photoOrInitial(photo,name,cls="chatAvatar"){return photo?`<img class="${cls}" src="${safe(photo)}" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'" style="object-fit:cover"><span class="${cls}" style="display:none;background:linear-gradient(135deg,var(--p),#9185ff)">${initials(name)}</span>`:`<span class="${cls}" style="background:linear-gradient(135deg,var(--p),#9185ff)">${initials(name)}</span>`;}
 function chatTime(ts){try{const d=ts?.toDate?ts.toDate():new Date(ts);return d.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});}catch(e){return ""}}
@@ -747,7 +748,8 @@ function chatFromBook(id){
  if(!user){login("Login first to chat with the seller.");return}
  if(isOwnListing(b)){blockOwnChat();return}
  if(!b.ownerUid){toast("Seller chat available nahi hai");return}
- openChatForUser(b.ownerUid,b.seller,b.sellerPhoto||"",b.title,String(b.id));
+ pendingBook={id:String(b.id),title:String(b.title||"Book")};
+ openChatForUser(b.ownerUid,b.seller,b.sellerPhoto||"","","general");
 }
 function openChats(){
  if(!user||!user.uid){login("Login first to open Chats.");return}
@@ -772,9 +774,9 @@ function renderChatList(){
   const other=(c.participants||[]).find(x=>x!==user.uid)||"";
   const name=c.participantNames?.[other]||"CampusLoop User";
   const photo=c.participantPhotos?.[other]||"";
-  const bookTitle=c.bookTitle||"Book chat";
+  const bookTitle=(c.bookId&&c.bookId!=="general")?(c.bookTitle||"Book chat"):"";
   const unread=Number(c[`unread_${user.uid}`]||0);
-  return `<button class="chatItem" onclick="openChatForUser('${safe(other)}','${safe(name).replace(/'/g,"&#039;")}','${safe(photo)}','${safe(bookTitle).replace(/'/g,"&#039;")}','${safe(c.bookId||"general")}','${safe(c.id)}')">${photoOrInitial(photo,name)}<span class="chatItemInfo"><b>${safe(name)}</b><span class="chatPreview">📚 ${safe(bookTitle)} · ${safe(c.lastMessage||"Start a conversation")}</span></span><span>${unread?`<span class="unreadBadge">${unread>99?'99+':unread}</span>`:`<span class="chatTime">${chatTime(c.lastMessageAt)}</span>`}</span></button>`;
+  return `<button class="chatItem" onclick="openChatForUser('${safe(other)}','${safe(name).replace(/'/g,"&#039;")}','${safe(photo)}','${safe(bookTitle).replace(/'/g,"&#039;")}','${safe(c.bookId||"general")}','${safe(c.id)}')">${photoOrInitial(photo,name)}<span class="chatItemInfo"><b>${safe(name)}</b><span class="chatPreview">${bookTitle?"📚 "+safe(bookTitle)+" · ":""}${safe(c.lastMessage||"Start a conversation")}</span></span><span>${unread?`<span class="unreadBadge">${unread>99?'99+':unread}</span>`:`<span class="chatTime">${chatTime(c.lastMessageAt)}</span>`}</span></button>`;
  }).join("");
 }
 async function openChatForUser(otherUid,otherName,otherPhoto,bookTitle="",bookId="general",existingChatId){
@@ -789,6 +791,7 @@ async function openChatForUser(otherUid,otherName,otherPhoto,bookTitle="",bookId
  const cid=existingChatId||chatIdFor(user.uid,otherUid,bookId);
  currentChatId=cid;
  replyTo=null;
+ if(existingChatId)pendingBook=null;
  currentChatOther={uid:otherUid,name:otherName||"CampusLoop User",photo:otherPhoto||""};
  const chatRef=fbDoc(window.firebaseDb,"chats",cid);
  const known=!!existingChatId || chatCache.some(c=>c.id===cid);
@@ -824,7 +827,8 @@ async function openChatForUser(otherUid,otherName,otherPhoto,bookTitle="",bookId
    }
   }
  }
- modal(`<div class="chatBox"><div class="chatHead"><button class="chatBack" onclick="openChats()">←</button>${photoOrInitial(currentChatOther.photo,currentChatOther.name)}<div class="chatHeadInfo"><b>${safe(currentChatOther.name)}</b><small id="chatSub">${bookTitle?`📚 ${safe(bookTitle)} · Private chat`:"CampusLoop chat · Private"}</small></div></div><div id="chatMessages" class="chatMessages"><div class="chatEmpty">Loading messages…</div></div><div class="replyBar" id="replyBar"></div><div class="chatComposer"><button class="attachBtn" onclick="document.getElementById('chatFileInput').click()" title="Attach photo">📎</button><input id="chatFileInput" type="file" accept="image/*" style="display:none" onchange="handleChatFile(event)"><input id="chatInput" placeholder="Type a message…" autocomplete="off" onkeydown="if(event.key==='Enter')sendChatMessage()" onfocus="setTimeout(()=>{const m=document.getElementById('chatMessages');if(m)m.scrollTop=m.scrollHeight},350)"><button onclick="sendChatMessage()">➤</button></div></div>`);
+ modal(`<div class="chatBox"><div class="chatHead"><button class="chatBack" onclick="openChats()">←</button>${photoOrInitial(currentChatOther.photo,currentChatOther.name)}<div class="chatHeadInfo"><b>${safe(currentChatOther.name)}</b><small id="chatSub">${bookTitle?`📚 ${safe(bookTitle)} · Private chat`:"CampusLoop chat · Private"}</small></div></div><div id="chatMessages" class="chatMessages"><div class="chatEmpty">Loading messages…</div></div><div class="replyBar" id="bookBar"></div><div class="replyBar" id="replyBar"></div><div class="chatComposer"><button class="attachBtn" onclick="document.getElementById('chatFileInput').click()" title="Attach photo">📎</button><input id="chatFileInput" type="file" accept="image/*" style="display:none" onchange="handleChatFile(event)"><input id="chatInput" placeholder="Type a message…" autocomplete="off" onkeydown="if(event.key==='Enter')sendChatMessage()" onfocus="setTimeout(()=>{const m=document.getElementById('chatMessages');if(m)m.scrollTop=m.scrollHeight},350)"><button onclick="sendChatMessage()">➤</button></div></div>`);
+ renderBookBar();
  listenMessages();
  setTimeout(()=>document.getElementById("chatInput")?.focus(),100);
 }
@@ -854,7 +858,7 @@ function renderMessages(msgs){
   const deleted=!!m.deletedForEveryone;
   const img=(!deleted&&m.image)?`<img src="${m.image}" alt="photo">`:"";
   const txt=deleted?`<i style="color:#999">🚫 This message was deleted</i>`:((m.text&&m.text!=="📷 Photo")?safe(m.text):"");
-  return `<div class="bubbleRow ${isMine?'mine':''}"><div class="bubble" onclick="openMsgMenu(event,'${safe(String(m.id))}',${isMine},${deleted})">${(!deleted&&m.replyTo)?`<div class="replyQuote"><b>${safe(m.replyTo.senderName||"")}</b><span>${safe(m.replyTo.text||"")}</span></div>`:""}${img}${txt}<div class="bubbleMeta"><span>${chatTime(m.createdAt)}</span>${chatStatus(m)}</div></div></div>`;
+  return `<div class="bubbleRow ${isMine?'mine':''}"><div class="bubble" onclick="openMsgMenu(event,'${safe(String(m.id))}',${isMine},${deleted})">${(!deleted&&m.refBookTitle)?`<div class="bookTag">📚 ${safe(m.refBookTitle)}</div>`:""}${(!deleted&&m.replyTo)?`<div class="replyQuote"><b>${safe(m.replyTo.senderName||"")}</b><span>${safe(m.replyTo.text||"")}</span></div>`:""}${img}${txt}<div class="bubbleMeta"><span>${chatTime(m.createdAt)}</span>${chatStatus(m)}</div></div></div>`;
  }).join("");
  el.scrollTop=el.scrollHeight;
 }
@@ -951,9 +955,9 @@ async function sendChatImage(dataUrl){
   const msgRef=await fbAddDoc(fbCollection(chatRef,"messages"),{
    senderUid:user.uid,receiverUid:currentChatOther.uid,text:"📷 Photo",image:dataUrl,
    bookId:String(currentChatId.split("__BOOK__")[1]||"general"),
-   createdAt:fbServerTimestamp(),status:"sent",deliveredAt:null,readAt:null,...replyField()
+   createdAt:fbServerTimestamp(),status:"sent",deliveredAt:null,readAt:null,...replyField(),...bookField()
   });
-  clearReply();
+  clearReply();clearBook();
   await fbUpdateDoc(chatRef,{lastMessage:"📷 Photo",lastMessageAt:fbServerTimestamp(),lastSenderUid:user.uid,lastMessageId:msgRef.id,lastMessageStatus:"sent",[`unread_${currentChatOther.uid}`]:fbIncrement(1),updatedAt:fbServerTimestamp()});
  }catch(e){console.error(e);alert("Photo send nahi hui: "+(e.message||""));}
 }
@@ -962,8 +966,8 @@ async function sendChatMessage(){
  input.readOnly=true;
  try{
   const chatRef=fbDoc(window.firebaseDb,"chats",currentChatId);
-  const msgRef=await fbAddDoc(fbCollection(chatRef,"messages"),{senderUid:user.uid,receiverUid:currentChatOther.uid,text,bookId:String(currentChatId.split("__BOOK__")[1]||"general"),createdAt:fbServerTimestamp(),status:"sent",deliveredAt:null,readAt:null,...replyField()});
-  clearReply();
+  const msgRef=await fbAddDoc(fbCollection(chatRef,"messages"),{senderUid:user.uid,receiverUid:currentChatOther.uid,text,bookId:String(currentChatId.split("__BOOK__")[1]||"general"),createdAt:fbServerTimestamp(),status:"sent",deliveredAt:null,readAt:null,...replyField(),...bookField()});
+  clearReply();clearBook();
   await fbUpdateDoc(chatRef,{lastMessage:text,lastMessageAt:fbServerTimestamp(),lastSenderUid:user.uid,lastMessageId:msgRef.id,lastMessageStatus:"sent",[`unread_${currentChatOther.uid}`]:fbIncrement(1),updatedAt:fbServerTimestamp()});
   input.value="";
  }catch(e){console.error(e);alert("Message send nahi hua. Firestore chat rules check karo.\n\n"+(e.message||""));}
@@ -1176,7 +1180,7 @@ window.addEventListener("pageshow", (e)=>{
   if (e.persisted && window.currentFirebaseUser && typeof lockAuthHistory==="function") lockAuthHistory();
 });
 /* ===== Reply, unread badge, keyboard fix ===== */
-let replyTo=null, unreadUnsub=null, lastUnreadTotal=null;
+let pendingBook=null, replyTo=null, unreadUnsub=null, lastUnreadTotal=null;
 function startReply(msgId){
  const m=(lastMessages||[]).find(x=>String(x.id)===String(msgId));if(!m)return;
  const mine=m.senderUid===user.uid;
@@ -1186,6 +1190,11 @@ function startReply(msgId){
  bar.classList.add("show");
  document.getElementById("chatInput")?.focus();
 }
+function renderBookBar(){const bar=document.getElementById("bookBar");if(!bar)return;
+ if(pendingBook){bar.innerHTML=`<div class="rbBody"><b>📚 Book mention</b><span class="rbText">${safe(pendingBook.title)}</span></div><button onclick="pendingBook=null;renderBookBar()">✕</button>`;bar.classList.add("show");}
+ else{bar.innerHTML="";bar.classList.remove("show");}}
+function clearBook(){pendingBook=null;renderBookBar();}
+function bookField(){return pendingBook?{refBookId:pendingBook.id,refBookTitle:pendingBook.title.slice(0,100)}:{};}
 function clearReply(){replyTo=null;const bar=document.getElementById("replyBar");if(bar){bar.classList.remove("show");bar.innerHTML="";}}
 function replyField(){return replyTo?{replyTo:{id:replyTo.id,text:String(replyTo.text).slice(0,120),senderUid:replyTo.senderUid,senderName:replyTo.senderName}}:{};}
 function setNavBadge(n){const b=document.getElementById("navBadge");if(!b)return;if(n>0){b.textContent=n>99?"99+":String(n);b.classList.add("show");}else{b.textContent="";b.classList.remove("show");}}
