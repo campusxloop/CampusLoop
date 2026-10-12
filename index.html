@@ -754,7 +754,7 @@ function chatFromBook(id){
 function openChats(){
  if(!user||!user.uid){login("Login first to open Chats.");return}
  if(chatUnsub)chatUnsub();
- modal(`<h2>💬 Chats</h2><p class="muted">Buyer ↔ Seller conversations, real-time Firebase chat.</p><div id="chatList" class="chatList"><div class="chatEmpty">Loading chats…</div></div>`);
+ modal(`<h2>💬 Chats</h2><p class="muted">Buyer ↔ Seller conversations, real-time Firebase chat. <small>(v3)</small></p><div id="chatList" class="chatList"><div class="chatEmpty">Loading chats…</div></div>`);
  listenChatList();
 }
 function listenChatList(){
